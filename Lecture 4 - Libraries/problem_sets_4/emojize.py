@@ -1,0 +1,3 @@
+########## EMOJIZE ##########
+# Imports
+import emoji
