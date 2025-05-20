@@ -1,17 +1,17 @@
 import random
 
+
 def main():
-    guess_counter = 3
-    answer = "" 
-    get_level()
-    generate_integer(get_level)
-    print("Problems generated")
-    '''temp = generate_integer(level)
-    print(temp)
-    temp_2 = temp(get_level)
-    print(temp_2)'''
-    
-    
+    print("Intitialising program")
+    int_list = generate_integer(level=get_level())
+    # guess_counter = 3
+    # answer = "" 
+    # problems = generate_integer(get_level)
+    print("Main fetching integer list")
+    # int_list = generate_integer(level=get_level())
+    # int_list = generate_integer(int_list)
+    print("Integers generated:")
+    print(int_list)
 
 
 def get_level():
@@ -20,7 +20,8 @@ def get_level():
         try:
             level = input("Level: ")
             if level == "1" or level == "2" or level == "3":
-                print("Level correct")                
+                print("Level correct")
+                print(f"Level: {level}")
             else:
                 print("Incorrect level")
                 continue
@@ -28,45 +29,52 @@ def get_level():
         except ValueError:
             continue
 
+        print(f"Returning level: {level}")
         return level
         # generate_integer(level)
-        break
+        # break
     
 
 def generate_integer(level):
-    print("Initialising integer generation")
+    print(f"Initialising integer generation with level: {level}")
     int_list = []
-    problem_list = []
-    
-    for int in range(10):        
-        if level == "1":
+    # problem_list = []
+        
+    if level == "1":
+        for int in range(10):
             integer = random.randint(0, 9)
             int_list.append(integer)
-            # print(integer)
-        elif level == "2":
+            print(f"Adding single digit integer {integer}")
+    elif level == "2":
+        for int in range(10):
             integer = random.randint(10, 99)
             int_list.append(integer)
-            # print(integer)
-        else:
+            print(f"Adding double digit integer {integer}")
+    elif level == "3":
+        for int in range(10):
             integer = random.randint(100, 999)
             int_list.append(integer)
-            # print(integer)
+            print(f"Adding triple digit integer {integer}")
+    else:
+        print("[ERROR]")
+        
      
-    # print(integer)        
     print(int_list)
+    return int_list
 
-    for i in range(10):
+    '''for i in range(10):
         x = random.choice(int_list)
-        print(x)
+        print(f"x = {x}")
         y = random.choice(int_list)
-        print(y)
+        print(f"y = {y}")
         problem = x + y
-        print(problem)
+        print(f"problem: {x} + {y} = {problem}")
         problem_list.append([x, y, problem])
-        # return problem
     
     print(problem_list)
-    return problem_list
+    print(type(problem_list))
+    print("Returning problem list")
+    return problem_list'''
 
 if __name__ == "__main__":
     main()
