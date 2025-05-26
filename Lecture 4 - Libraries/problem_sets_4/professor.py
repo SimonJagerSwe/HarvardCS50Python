@@ -3,7 +3,8 @@ import random
 
 def main():
     problem_list = []    
-    correct_answers = 0
+    score = 0
+    guess_counter = 3
 
     int_list = generate_integer(level=get_level())
     print("Generating problems..")
@@ -17,35 +18,66 @@ def main():
     print(f"Problem list:")
     print(problem_list)
 
-    while len(problem_list) > 0:
+       
+    for question in problem_list:
         guess_counter = 3
-        for question in problem_list:
-            question_x = question[0]
-            question_y = question[1]
-            answer = question[2]
-            guess = int(input(f"{question_x} + {question_y} = "))
+        question_x = question[0]
+        question_y = question[1]
+        answer = question[2]
+        guess = int(input(f"{question_x} + {question_y} = "))
+        guess_counter -= 1
 
+        while True:
+            while guess != answer:
+                print("EEE")
+                guess = int(input(f"{question_x} + {question_y} = "))
+                guess_counter -= 1
 
-            while guess_counter > 0:
-                # guess = int(input(f"{question_x} + {question_y} = "))
-                if guess == answer:
-                    problem_list.remove(question)
-                    print(problem_list)
-                    correct_answers += 1
-                    print(correct_answers)
+                if guess_counter == 0:
+                    print(answer)
                     break
-                else:
-                    print("EEE")
-                    guess_counter -= 1
-                    print(f"Number of guesses left: {guess_counter}")
-                    # guess = int(input(f"{question_x} + {question_y} = "))
-                    continue
-                print(f"{question_x} + {question_y} = {answer}")
-            problem_list.remove(question)
-            print(problem_list)
+
+            if guess == answer:
+                score += 1
+                break
+            else:
+                break
+
+        print(score)
+
+
+
+        '''if guess == answer:
+                print("Correct!")
+                correct_answers += 1
+                print(correct_answers)
+            else:
+                print("EEE")
+                guess_counter -= 1
+                print(guess_counter)
+
+                while guess_counter > 0:
+            guess = int(input(f"{question_x} + {question_y} = "))
+            if guess == answer:
+                # problem_list.remove(question)
+                print(problem_list)
+                correct_answers += 1
+                print(correct_answers)
+                # break
+                # continue
+            else:
+                print("EEE")
+                guess_counter -= 1
+                print(f"Number of guesses left: {guess_counter}")
+                # break
+                # continue
+
+            # print(f"{question_x} + {question_y} = {answer}")
+            break
             # continue
             
-    print(f"Score: {correct_answers}")
+        print(f"{question_x} + {question_y} = {answer}")
+    print(problem_list)'''
 
 
 def get_level():
