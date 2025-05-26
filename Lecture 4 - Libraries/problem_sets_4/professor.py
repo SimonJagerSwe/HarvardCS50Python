@@ -6,14 +6,16 @@ def main():
     score = 0
     guess_counter = 3
 
-    int_list = generate_integer(level=get_level())
+    integer = generate_integer(level=get_level())
+    print(f"Integers: {integer}")
+    # int_list
     print("Generating problems..")
 
-    for i in range(10):
-        x = random.choice(int_list)
-        y = random.choice(int_list)
-        problem = x + y
-        problem_list.append([x, y, problem])
+    # for i in range(10):
+        # x = random.choice(int_list)
+        # y = random.choice(int_list)
+        # problem = x + y
+        # problem_list.append([x, y, problem])
     
     print(f"Problem list:")
     print(problem_list)
@@ -46,40 +48,6 @@ def main():
         print(score)
 
 
-
-        '''if guess == answer:
-                print("Correct!")
-                correct_answers += 1
-                print(correct_answers)
-            else:
-                print("EEE")
-                guess_counter -= 1
-                print(guess_counter)
-
-                while guess_counter > 0:
-            guess = int(input(f"{question_x} + {question_y} = "))
-            if guess == answer:
-                # problem_list.remove(question)
-                print(problem_list)
-                correct_answers += 1
-                print(correct_answers)
-                # break
-                # continue
-            else:
-                print("EEE")
-                guess_counter -= 1
-                print(f"Number of guesses left: {guess_counter}")
-                # break
-                # continue
-
-            # print(f"{question_x} + {question_y} = {answer}")
-            break
-            # continue
-            
-        print(f"{question_x} + {question_y} = {answer}")
-    print(problem_list)'''
-
-
 def get_level():
     print("Initialising get level...")
     while True:
@@ -97,22 +65,26 @@ def get_level():
 
 def generate_integer(level):
     int_list = []
-        
+ 
     if level == "1":
         for int in range(10):
-            integer = random.randint(0, 9)
-            int_list.append(integer)
+            integer = random.randint(0, 9)                    
+            # int_list.append(integer)
+            # return integer
     elif level == "2":
         for int in range(10):
             integer = random.randint(10, 99)
-            int_list.append(integer)
+            # int_list.append(integer)
+            # return integer
     else:
         for int in range(10):
             integer = random.randint(100, 999)
-            int_list.append(integer)
+            # int_list.append(integer)
+            # return integer
 
-    print(int_list)
-    return int_list
+    # print(int_list)
+    # return int_list
+    return integer
 
 if __name__ == "__main__":
     main()
