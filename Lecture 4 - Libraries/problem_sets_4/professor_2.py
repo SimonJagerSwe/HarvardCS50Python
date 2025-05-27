@@ -1,10 +1,12 @@
 import random
+random.seed(500)
 
 
 def main():
     problem_list = []
+    score = 0
+
     level = get_level()
-    generate_integer(level)
 
     for integer in range(10):
         x = generate_integer(level)
@@ -14,6 +16,34 @@ def main():
         answer = x + y
         print(f"{x} + {y}")
         print(f"Answer: {answer}")
+        problem_list.append([x, y, answer])
+
+    # print(problem_list)
+    for question in problem_list:
+        guess_counter = 3
+        question_x = question[0]
+        question_y = question[1]
+        answer = question[2]
+        guess = int(input(f"{question_x} + {question_y} = "))
+        guess_counter -= 1
+
+        while True:
+            while guess != answer:
+                print("EEE")
+                guess = int(input(f"{question_x} + {question_y} = "))
+                guess_counter -= 1
+
+                if guess_counter == 0:
+                    print(answer)
+                    break
+
+            if guess == answer:
+                score += 1
+                break
+            else:
+                break
+
+        print(score)
 
 
 def get_level():
