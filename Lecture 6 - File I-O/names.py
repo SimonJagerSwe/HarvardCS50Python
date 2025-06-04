@@ -1,5 +1,5 @@
 ########## NAMES ##########
-# Example 1
+# Example 1, will delete at the end of runtime
 '''names = []
 
 for _ in range(3):    
