@@ -36,7 +36,7 @@ def count_lines(file):
             
         for line in file:            
             line = line.strip()
-            print(line[slice(1)])
+            # print(line[slice(1)])
             # print(line)
             # print(f"{len(line)}")
             # print(type(line))
