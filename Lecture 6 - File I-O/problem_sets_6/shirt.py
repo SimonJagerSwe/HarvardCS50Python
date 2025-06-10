@@ -3,6 +3,7 @@ import os
 import sys
 
 from PIL import Image
+from PIL import ImageOps
 
 
 # Main function
@@ -11,11 +12,13 @@ def main():
     arguments = sys.argv
     verify_args(arguments)
     # print(arguments)
-    file_1 = arguments[1]
-    print(file_1)
-    file_2 = arguments[2]
-    print(file_2)
-    handle_images(file_1, file_2)
+    before = arguments[1]
+    # print(before)
+    shirt = "shirt.png"
+    # print(shirt)
+    after = arguments[2]
+    # print(after)
+    handle_images(before, shirt, after)
 
 
 
@@ -48,8 +51,17 @@ def verify_args(args):
 
     
 # Image handling
-def handle_images(file_1, file_2):
-    pass
+def handle_images(muppet, shirt, after):
+    muppet = Image.open(muppet)
+    shirt = Image.open(shirt)    
+    # print(muppet.size, shirt.size)
+    muppet = ImageOps.fit(muppet, [shirt.size[0], shirt.size[1]])
+    # shirt = ImageOps.fit(shirt, [900, 1200])  # size=[muppet.size[0], muppet.size[1]]
+    # print(shirt.size)
+    muppet.paste(shirt, (0, 0), mask = shirt)
+
+    # muppet.show()
+    muppet.save(after)
 
 # File execution check
 if __name__ == "__main__":
