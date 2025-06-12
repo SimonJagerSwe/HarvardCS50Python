@@ -20,7 +20,8 @@ email = input("What's your email? ").strip()
 # \w        - word character, includes alphabet, numerics and underscor, replaces [a-zA-Z0-9_]
 # \W        - not a word character
 # |         - or operator, allows several arguments in one place
-
+# (...)     - a group
+# (?:...)   - non-capturing version
 
 
 # Example 1, no regex
@@ -112,4 +113,3 @@ if re.search(r"^\w+@(\w+\.)?\w+\.edu$", email, re.IGNORECASE):
     print("Valid")
 else:
     print("Invalid")
-    
