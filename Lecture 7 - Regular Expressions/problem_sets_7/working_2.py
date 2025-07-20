@@ -13,15 +13,11 @@ def time_conversion(s):
     # print(time.group(4))
     # print(time.group(5))
     # print(time.group(6))
-
-
-    # Check if time conforms to expressions
-    if time:
-
-
+    # print(type(time))
+    if time:    
         # Dividing time expression into up time variables
         starting_hour = int(time.group(1))
-        starting_minutes = time.group(2)
+        starting_minutes = int(time.group(2))
         starting_am_or_pm = time.group(3)
         starting_time = ""
         ending_hour = int(time.group(4))       
@@ -88,12 +84,12 @@ def time_conversion(s):
 
 
         time = (f"{starting_time} to {ending_time}")
-        return time
-         
             
-    #  If time format doesn't align with expressions, raise value error
-    else:        
+    else:
         raise ValueError
+    
+
+    return time
 
 
 if __name__ == "__main__":
