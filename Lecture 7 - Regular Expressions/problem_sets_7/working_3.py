@@ -21,8 +21,10 @@ def time_conversion(s):
                 pass
         # Check if minutes are present in ending time
         if time.group(5):
-            if int(time.group(5)):
+            if int(time.group(5)) >= 60:
                 raise ValueError("Can't have that many minutes, now can we?")
+            else:
+                pass
         
 
         # Create starting time, checking for possible errors concerning 12-hour format errors where time starts with 12
@@ -33,9 +35,33 @@ def time_conversion(s):
             starting_hour -= 12
 
 
+        # Starting time
+        if time.group(2) == None:
+            start_time = (f"{starting_hour:02}:00")
+        else:
+            start_time = (f"{starting_hour}:{time.group(2)}")
+
+            
+        # Create ending time, same as above
+        ending_hour = int(time.group(4))
+        if time.group(6) == "PM":
+            ending_hour += 12
+        elif time.group(6) == "AM" and ending_hour == 12:
+            ending_hour -= 12
 
 
-    # If tine does not conform to above regex, raise error
+        # End time
+        if time.group(5) == None:
+            ending_time = (f"{ending_hour:02}:00")
+        else:
+            ending_time = (f"{ending_hour}:{time.group(5)}")
+
+        time = (f"{starting_hour} to {ending_hour}")
+        return time
+
+
+
+    # If time does not conform to above regex, raise error
     else:
         raise ValueError("Wrongo!!!")
 
