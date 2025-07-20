@@ -38,7 +38,6 @@ def time_conversion(s):
         else:
             pass
 
-
         # Same for ending hours
         if ending_am_or_pm == "PM":
             ending_hour += 12
@@ -53,7 +52,6 @@ def time_conversion(s):
             starting_time = (f"{starting_hour:02}:00")
         else:
             starting_time = (f"{starting_hour:02}:{starting_minutes}")
-
         
         # Same for ending minutes
         if not ending_minutes:
