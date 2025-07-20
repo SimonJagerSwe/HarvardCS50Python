@@ -7,6 +7,12 @@ def main():
 def time_conversion(s):
     # For first time, check if there are minutes present, if minutes are present, check that minutes are double digits, then find AM or PM, then repeat
     time = re.search(r"^(\d{1,2}):?(\d{2})? (AM|PM) to (\d{1,2}):?(\d{2})? (AM|PM)$", s, re.IGNORECASE)
+    # print(time.group(1))
+    # print(time.group(2))
+    # print(time.group(3))
+    # print(time.group(4))
+    # print(time.group(5))
+    # print(time.group(6))
 
 
     # Check if time conforms to expressions
@@ -19,21 +25,34 @@ def time_conversion(s):
         ending_hour = int(time.group(4))        
         ending_am_or_pm = time.group(6)
 
-        # Check that minutes don't exceed 59
+        # Check that starting minutes don't exceed 59
         if time.group(2):
-            starting_minutes = int(time.group(2))
-            if starting_minutes >= 60:
+            if time.group(2) >= 60:
                 raise ValueError
             else:
-                return starting_minutes
+                starting_minutes = time.group(2)
+    
+            # Check if minutes are present in starting time
+            if not starting_minutes:
+                starting_time = (f"{starting_hour:02}:00")
+            else:
+                starting_time = (f"{starting_hour:02}:{starting_minutes}")
             
-        if time.group(5):
-            ending_minutes = int(time.group(5))
-            if ending_minutes >= 60:
+        
+        # Check that ending minutes don't exceed 59
+        if time.group(5):            
+            if time.group(5) >= 60:
                 raise ValueError
             else:
-                return ending_minutes
-        
+                ending_minutes = int(time.group(5))
+
+            if not ending_minutes:
+                ending_time = (f"{ending_hour:02}:00")
+            else:
+                ending_time = (f"{ending_hour:00}:{ending_minutes}")
+
+            # Check if minutes are present in ending time
+            
 
         # Check if starting hour is AM or PM, and checking against errors stemming from 12 AM
         if starting_am_or_pm == "PM":
@@ -52,17 +71,7 @@ def time_conversion(s):
             pass
 
 
-        # After validating hours, check for starting minutes
-        if not starting_minutes:
-            starting_time = (f"{starting_hour:02}:00")
-        else:
-            starting_time = (f"{starting_hour:02}:{starting_minutes}")
         
-        # Same for ending minutes
-        if not ending_minutes:
-            ending_time = (f"{ending_hour:02}:00")
-        else:
-            ending_time = (f"{ending_hour:00}:{ending_minutes}")
 
         time = (f"{starting_time} to {ending_time}")
         return time
