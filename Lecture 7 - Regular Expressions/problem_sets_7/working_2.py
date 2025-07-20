@@ -58,10 +58,7 @@ def time_conversion(s):
             ending_time = (f"{ending_hour:02}:00")
         else:
             ending_time = (f"{ending_hour:00}:{ending_minutes}")
-
-        # Repeat above for finishing hours, not very DRY, but it's what I can get to work
          
-
             
     #  If time format doesn't align with expressions, raise value error
     else:        
