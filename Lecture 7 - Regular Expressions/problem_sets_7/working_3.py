@@ -4,12 +4,12 @@ import re
 
 # Main function
 def main():
-    print(time_conversion(input("Hours: ")))
+    print(time_conversion(input("Hours: ").upper()))
 
 
 # Time conversion function, using regex
 def time_conversion(s):
-    time = re.search(r"^(\d{1,2}):?(\d{2})? (AM|PM) to (\d{1,2}):?(\d{2})? (AM|PM)$", s, re.IGNORECASE)
+    time = re.search(r"^(\d{1,2}):?(\d{2})? (AM|PM) TO (\d{1,2}):?(\d{2})? (AM|PM)$", s)
 
     # Check if time comforms to above regex
     if time:
@@ -34,12 +34,11 @@ def time_conversion(s):
         elif time.group(3) == "AM" and starting_hour == 12:
             starting_hour -= 12
 
-
         # Starting time
         if time.group(2) == None:
-            start_time = (f"{starting_hour:02}:00")
+            starting_time = (f"{starting_hour:02}:00")
         else:
-            start_time = (f"{starting_hour}:{time.group(2)}")
+            starting_time = (f"{starting_hour}:{time.group(2)}")
 
             
         # Create ending time, same as above
@@ -49,16 +48,16 @@ def time_conversion(s):
         elif time.group(6) == "AM" and ending_hour == 12:
             ending_hour -= 12
 
-
         # End time
         if time.group(5) == None:
             ending_time = (f"{ending_hour:02}:00")
         else:
-            ending_time = (f"{ending_hour}:{time.group(5)}")
+            ending_time = (f"{ending_hour:02}:{time.group(5)}")
 
-        time = (f"{starting_hour} to {ending_hour}")
+        time = (f"{starting_time} to {ending_time}")
+
+        # Return valid time value
         return time
-
 
 
     # If time does not conform to above regex, raise error
