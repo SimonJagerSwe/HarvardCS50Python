@@ -29,7 +29,7 @@ def time_conversion(s):
 
         # Create starting time, checking for possible errors concerning 12-hour format errors where time starts with 12
         starting_hour = int(time.group(1))
-        if time.group(3) == "PM":
+        if time.group(3) == "PM" and starting_hour <= 12:
             starting_hour += 12
         elif time.group(3) == "AM" and starting_hour == 12:
             starting_hour -= 12
