@@ -15,19 +15,24 @@ def time_conversion(s):
 
         # Dividing time expression into up time variables
         starting_hour = int(time.group(1))        
-        starting_minutes = int(time.group(2))
         starting_am_or_pm = time.group(3)
-        ending_hour = int(time.group(4))
-        ending_minutes = int(time.group(5))
-        ending_am_or_pm = int(time.group(6))        
-
+        ending_hour = int(time.group(4))        
+        ending_am_or_pm = time.group(6)
 
         # Check that minutes don't exceed 59
-        if starting_minutes:
+        if time.group(2):
+            starting_minutes = int(time.group(2))
             if starting_minutes >= 60:
                 raise ValueError
+            else:
+                return starting_minutes
+            
+        if time.group(5):
+            ending_minutes = int(time.group(5))
             if ending_minutes >= 60:
                 raise ValueError
+            else:
+                return ending_minutes
         
 
         # Check if starting hour is AM or PM, and checking against errors stemming from 12 AM
@@ -58,6 +63,9 @@ def time_conversion(s):
             ending_time = (f"{ending_hour:02}:00")
         else:
             ending_time = (f"{ending_hour:00}:{ending_minutes}")
+
+        time = (f"{starting_time} to {ending_time}")
+        return time
          
             
     #  If time format doesn't align with expressions, raise value error
