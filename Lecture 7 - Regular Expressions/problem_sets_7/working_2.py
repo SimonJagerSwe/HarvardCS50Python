@@ -20,28 +20,44 @@ def time_conversion(s):
 
 
         # Dividing time expression into up time variables
-        starting_hour = int(time.group(1))        
+        starting_hour = int(time.group(1))
+        starting_minutes = time.group(2)
         starting_am_or_pm = time.group(3)
-        ending_hour = int(time.group(4))        
+        starting_time = ""
+        ending_hour = int(time.group(4))       
+        # ending_minutes = int(time.group(5))
         ending_am_or_pm = time.group(6)
+        ending_time = ""
 
-        # Check that starting minutes don't exceed 59
-        if time.group(2):
-            if time.group(2) >= 60:
+        print(starting_hour)
+        print(type(starting_hour))
+        print(starting_minutes)
+        print(type(starting_minutes))
+        print(starting_am_or_pm)
+        print(type(starting_am_or_pm))
+        print(ending_hour)
+        # print(ending_minutes)
+        # print(type(ending_minutes))
+        print(ending_am_or_pm)
+        print(type(ending_am_or_pm))
+
+        # Check if starting minutes are present, and not exceeding 59
+        if time.group(2) is not None:
+            starting_minutes = int(time.group(2))
+            if starting_minutes >= 60:
                 raise ValueError
             else:
-                starting_minutes = time.group(2)
+                starting_minutes = int(time.group(2))
     
-            # Check if minutes are present in starting time
-            if not starting_minutes:
-                starting_time = (f"{starting_hour:02}:00")
-            else:
-                starting_time = (f"{starting_hour:02}:{starting_minutes}")
+        # Check if minutes are present in starting time
+        else:
+            starting_minutes = 00
             
         
         # Check that ending minutes don't exceed 59
-        if time.group(5):            
-            if time.group(5) >= 60:
+        if time.group(5):    
+            ending_minutes = int(time.group(5))
+            if ending_minutes >= 60:
                 raise ValueError
             else:
                 ending_minutes = int(time.group(5))
@@ -70,8 +86,6 @@ def time_conversion(s):
         else:
             pass
 
-
-        
 
         time = (f"{starting_time} to {ending_time}")
         return time
