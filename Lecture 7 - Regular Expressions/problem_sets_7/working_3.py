@@ -43,7 +43,7 @@ def time_conversion(s):
             
         # Create ending time, same as above
         ending_hour = int(time.group(4))
-        if time.group(6) == "PM":
+        if time.group(6) == "PM" and starting_time != 12:
             ending_hour += 12
         elif time.group(6) == "AM" and ending_hour == 12:
             ending_hour -= 12
@@ -62,7 +62,7 @@ def time_conversion(s):
 
     # If time does not conform to above regex, raise error
     else:
-        raise ValueError("Wrongo!!!")
+        raise ValueError("Invalid time format")
 
 
 # Condition to run main function
