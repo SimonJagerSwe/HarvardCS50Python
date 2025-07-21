@@ -62,7 +62,7 @@ def time_conversion(s):
         if ending_minutes == None:
             ending_time = f"{ending_hour:02}:00"
         else:
-            ending_time = f"{ending_hour:02}{ending_minutes:02}"
+            ending_time = f"{ending_hour:02}:{ending_minutes:02}"
 
         time = f"{start_time} to {ending_time}"
         return time
