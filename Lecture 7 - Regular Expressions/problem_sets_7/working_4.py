@@ -14,23 +14,23 @@ def time_conversion(s):
     if time:
         # Divide up starting hours and minutes, and ending hours and minutes into variables
         starting_hour = int(time.group(1))
-        print(starting_hour)
-        print(type(starting_hour))
+        # print(starting_hour)
+        # print(type(starting_hour))
         starting_minutes = time.group(2)
-        print(starting_minutes)
-        print(type(starting_minutes))
+        # print(starting_minutes)
+        # print(type(starting_minutes))
         starting_am_or_pm = time.group(3)
-        print(starting_am_or_pm)
+        # print(starting_am_or_pm)
         # print(type(starting_am_or_pm))
         start_time = ""
         ending_hour = int(time.group(4))
-        print(ending_hour)
+        # print(ending_hour)
         # print(type(ending_hour))
         ending_minutes = time.group(5)
-        print(ending_minutes)
+        # print(ending_minutes)
         # print(type(ending_minutes))
         ending_am_or_pm = time.group(6)
-        print(ending_am_or_pm)
+        # print(ending_am_or_pm)
         # print(type(ending_am_or_pm))
         ending_time = ""
 
@@ -46,17 +46,26 @@ def time_conversion(s):
         if starting_minutes == None:
             start_time = f"{starting_hour:02}:00"
         else:
-            start_time = f"{starting_hour}:{starting_minutes}"
+            start_time = f"{starting_hour:02}:{starting_minutes:02}"
             
         # return start_time
 
         # Check if ending hours ar am or pm
         if ending_am_or_pm == "PM" and ending_hour != 12:
             ending_hour += 12
-            print(ending_hour)
+            # print(ending_hour)
         elif ending_am_or_pm == "AM" and ending_hour == 12:
             ending_hour -= 12
-            print(ending_hour)
+            # print(ending_hour)
+
+        # Check if there are ending minutes
+        if ending_minutes == None:
+            ending_time = f"{ending_hour:02}:00"
+        else:
+            ending_time = f"{ending_hour:02}{ending_minutes:02}"
+
+        time = f"{start_time} to {ending_time}"
+        return time
         
 
 
