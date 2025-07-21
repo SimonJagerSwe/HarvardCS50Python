@@ -15,22 +15,24 @@ def time_conversion(s):
         # Divide up starting hours and minutes, and ending hours and minutes into variables
         starting_hour = int(time.group(1))
         print(starting_hour)
-        # print(type(starting_hour))
-        starting_minute = time.group(2)
-        print(starting_minute)
-        # print(type(starting_minute))
+        print(type(starting_hour))
+        starting_minutes = time.group(2)
+        print(starting_minutes)
+        print(type(starting_minutes))
         starting_am_or_pm = time.group(3)
         print(starting_am_or_pm)
         # print(type(starting_am_or_pm))
+        start_time = ""
         ending_hour = int(time.group(4))
         print(ending_hour)
         # print(type(ending_hour))
-        ending_minute = time.group(5)
-        print(ending_minute)
-        # print(type(ending_minute))
+        ending_minutes = time.group(5)
+        print(ending_minutes)
+        # print(type(ending_minutes))
         ending_am_or_pm = time.group(6)
         print(ending_am_or_pm)
         # print(type(ending_am_or_pm))
+        ending_time = ""
 
         # Check if starting hours are am or pm
         if starting_am_or_pm == "PM" and starting_hour <= 12:
@@ -39,6 +41,16 @@ def time_conversion(s):
         elif starting_am_or_pm == "AM" and starting_hour == 12:
             starting_hour -= 12
             # print(starting_hour)
+
+        # Check if there are starting time minutes
+        if starting_minutes == None:
+            start_time = f"{starting_hour:02}:00"
+        else:
+            start_time = f"{starting_hour}:{starting_minutes}"
+            
+        return start_time
+        
+
 
         
 
