@@ -48,7 +48,15 @@ def time_conversion(s):
         else:
             start_time = f"{starting_hour}:{starting_minutes}"
             
-        return start_time
+        # return start_time
+
+        # Check if ending hours ar am or pm
+        if ending_am_or_pm == "PM" and ending_hour != 12:
+            ending_hour += 12
+            print(ending_hour)
+        elif ending_am_or_pm == "AM" and ending_hour == 12:
+            ending_hour -= 12
+            print(ending_hour)
         
 
 
