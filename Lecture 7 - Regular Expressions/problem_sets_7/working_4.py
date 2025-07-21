@@ -13,7 +13,7 @@ def time_conversion(s):
     # Check if time variable is valid
     if time:
         # Divide up starting hours and minutes, and ending hours and minutes into variables
-        starting_hour = time.group(1)
+        starting_hour = int(time.group(1))
         print(starting_hour)
         # print(type(starting_hour))
         starting_minute = time.group(2)
@@ -22,7 +22,7 @@ def time_conversion(s):
         starting_am_or_pm = time.group(3)
         print(starting_am_or_pm)
         # print(type(starting_am_or_pm))
-        ending_hour = time.group(4)
+        ending_hour = int(time.group(4))
         print(ending_hour)
         # print(type(ending_hour))
         ending_minute = time.group(5)
@@ -31,7 +31,16 @@ def time_conversion(s):
         ending_am_or_pm = time.group(6)
         print(ending_am_or_pm)
         # print(type(ending_am_or_pm))
-    
+
+        # Check if starting hours are am or pm
+        if starting_am_or_pm == "PM" and starting_hour <= 12:
+            starting_hour += 12
+            # print(starting_hour)
+        else:
+            print("Whoopsie")
+
+        
+
     else:
         raise ValueError("Wrong time format")
 
