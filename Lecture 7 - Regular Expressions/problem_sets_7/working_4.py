@@ -66,11 +66,8 @@ def time_conversion(s):
 
         time = f"{start_time} to {ending_time}"
         return time
+    
         
-
-
-        
-
     else:
         raise ValueError("Wrong time format")
 
