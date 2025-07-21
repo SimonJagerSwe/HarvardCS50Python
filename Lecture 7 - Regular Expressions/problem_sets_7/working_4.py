@@ -36,8 +36,9 @@ def time_conversion(s):
         if starting_am_or_pm == "PM" and starting_hour <= 12:
             starting_hour += 12
             # print(starting_hour)
-        else:
-            print("Whoopsie")
+        elif starting_am_or_pm == "AM" and starting_hour == 12:
+            starting_hour -= 12
+            # print(starting_hour)
 
         
 
