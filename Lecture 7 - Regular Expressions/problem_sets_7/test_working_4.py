@@ -23,8 +23,8 @@ def test_pm_to_pm():
 
 def test_value_error():
     with pytest.raises(ValueError):
-        time_conversion()
+        time_conversion("9:60 AM TO 12:75 PM")
     with pytest.raises(ValueError):
-        time_conversion()
+        time_conversion("01:32 to 20:45")
     with pytest.raises(ValueError):
-        time_conversion()
+        time_conversion("9 AM - 9 PM")
