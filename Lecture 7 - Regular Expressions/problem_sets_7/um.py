@@ -7,19 +7,21 @@ def main():
 def count(s):
     counter = 0
     delimiters = [",", "."]
-    temp_list = []
+    new_string = ""
+    # temp_list = []
     # words = .split(delimiters, s)
     # return words
     for char in s:
         if char in delimiters:
-            temp_list.append(char)
-            new_string = s.replace(char, " ").split(" ")
+            # temp_list.append(char)
+            new_string.append(s.replace(char, " ").split(" "))
+        print(new_string)
 
     for word in new_string:
         if word == "um":
             counter += 1
 
-    return counter
+    return f"The string \"{s}\" contains {counter} of ums"
 
 
     # return new_string
