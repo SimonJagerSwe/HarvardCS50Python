@@ -33,9 +33,10 @@ def time_conversion(s):
         # print(ending_am_or_pm)
         # print(type(ending_am_or_pm))
         ending_time = ""
+        
 
         # Check if starting hours are am or pm
-        if starting_am_or_pm == "PM" and starting_hour <= 12:
+        if starting_am_or_pm == "PM" and starting_hour < 12:
             starting_hour += 12
             # print(starting_hour)
         elif starting_am_or_pm == "AM" and starting_hour == 12:
@@ -46,6 +47,8 @@ def time_conversion(s):
         if starting_minutes == None:
             start_time = f"{starting_hour:02}:00"
         else:
+            if int(starting_minutes) > 59:
+                raise ValueError("Wrong time format")
             start_time = f"{starting_hour:02}:{starting_minutes:02}"
             
         # return start_time
@@ -58,10 +61,13 @@ def time_conversion(s):
             ending_hour -= 12
             # print(ending_hour)
 
+
         # Check if there are ending minutes
         if ending_minutes == None:
             ending_time = f"{ending_hour:02}:00"
         else:
+            if int(ending_minutes) > 59:
+                raise ValueError("Wrong time format")
             ending_time = f"{ending_hour:02}:{ending_minutes:02}"
 
         time = f"{start_time} to {ending_time}"
