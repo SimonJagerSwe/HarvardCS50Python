@@ -1,13 +1,5 @@
+import pytest
 from working_4 import time_conversion
-
-
-'''def main():
-    test_am_to_pm()
-    test_am_to_am()
-    # test_pm_to_am()
-    # test_pm_to_pm()
-    # test_value_errors()
-'''
 
 def test_am_to_pm():
     assert time_conversion("9 AM TO 9 PM") == "09:00 to 21:00"
@@ -29,5 +21,10 @@ def test_pm_to_pm():
     assert time_conversion("2:00 PM TO 11:00 PM") == "14:00 to 23:00"
     assert time_conversion("4:23 PM TO 10:32 PM") == "16:23 to 22:32"
 
-'''if __name__ == "__main__":
-    main()'''
+def test_value_error():
+    with pytest.raises(ValueError):
+        time_conversion()
+    with pytest.raises(ValueError):
+        time_conversion()
+    with pytest.raises(ValueError):
+        time_conversion()
