@@ -21,9 +21,15 @@ def get_student():
 '''
 
 
-# Example 2, also validating user input
+# Example 2, also validating user input and raising errors
 class Student:
     def __init__(self, name, house):
+        if not name:
+            # print("Missing name")     # Doesn't actually handle the problem
+            # sys.exit("Missing name")  # Will exit program, and also requires importing sys
+            raise ValueError("Missing name")
+        if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+            raise ValueError("Invalid house")
         self.name = name
         self.house = house
 
@@ -38,7 +44,6 @@ def get_student():
     # student = Student(name, house)
     # return student
     return Student(name, house)
-
 
 
 
