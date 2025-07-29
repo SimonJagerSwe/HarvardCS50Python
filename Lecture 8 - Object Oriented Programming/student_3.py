@@ -30,6 +30,7 @@ class Student:
 
 def main():
     student = get_student()
+    # student.name = "Four Privet Drive"    # Otehr programmers can still force errors like this, use properties to stop this
     print(student)
     # print("Expecto Patronum!")
     # print(student.charm())
