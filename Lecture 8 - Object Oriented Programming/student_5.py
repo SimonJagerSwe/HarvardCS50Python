@@ -1,6 +1,12 @@
 ########## STUDENT 5 ##########
 
 # Example 1, using @classmethod to put get function within the Student class 
+# Better practice to place the main function at the top
+def main():
+    student = Student.get()
+    print(student)
+
+
 class Student:
     def __init__(self, name, house):
         self.name = name
@@ -16,10 +22,7 @@ class Student:
         return cls(name, house)
     
 
-def main():
-    student = Student.get()
-    print(student)
-
+# This function is made reduntant, and clarity is added to the program, as all methods and functions related to students are located within the Student class
 '''
 def get_student():
     name = input("Name: ")
