@@ -43,3 +43,6 @@ class Professor(Wizard):
 wizard = Wizard("Albus")
 student = Student("Harry", "Gryffindor")
 professor = Professor("Severus", "Defence Against the Dark Arts")
+print(wizard)
+print(student)
+print(professor)
