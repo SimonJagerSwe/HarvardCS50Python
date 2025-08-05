@@ -5,24 +5,26 @@ from datetime import date, datetime, timedelta
 
 
 def main():
-    birth_date = (validate_date(input("Date of birth: ")))
-    print(birth_date)
-    print(date_delta(birth_date))
+    current_date = date.today()
+    birth_date = (validate_date(input("Date of birth: "), current_date))
+    # print(birth_date)
+    print(date_delta(birth_date, current_date))
 
 
-def validate_date(birth_date):
+def validate_date(b, c):
     # current_date = datetime.date.today()
     # print(str(current_date))
     # print(type(current_date))
-    current_year = str(date.today()).split("-")[0]
+    year_string = str(c)
+    current_year = year_string.split("-")[0]
     # current_month = str(date.today()).split("-")[1]
     # current_day = str(date.today()).split("-")[2]
     # print(current_year)
     # print(current_month)
     # print(current_day)
-    given_year = birth_date.split("-")[0]
-    given_month = birth_date.split("-")[1]
-    given_day = birth_date.split("-")[2]
+    given_year = b.split("-")[0]
+    given_month = b.split("-")[1]
+    given_day = b.split("-")[2]
     if (
         len(given_year) != 4 or
         int(given_year) > int(current_year) or
@@ -38,15 +40,17 @@ def validate_date(birth_date):
     else:
         # birth_date = f"{year}-{month}-{day}"
         # return birth_date
-        # return f"{given_year}-{given_month}-{given_day}"
-        return [given_year, given_month, given_day]
+        return f"{given_year}-{given_month}-{given_day}"
+        # return [given_year, given_month, given_day]
     
 
-def date_delta(birth_date):
-    date_1 = (birth_date)
-    date_2 = str(date.today()).split("-")
-    datetime.timedelta()
-    return f"{date_1} / {date_2}"
+def date_delta(b, c):
+    birth_date = date.fromisoformat(str(b))
+    current_date = date.fromisoformat(str(c)) 
+    # delta = current_date - birth_date
+    # return delta
+    # return f"{date_1} / {date_2}"
+    return current_date - birth_date
 
 
 def convert_date(birth_str):
