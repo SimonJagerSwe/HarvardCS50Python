@@ -1,9 +1,8 @@
 # Imports
-# import datetime
 import inflect
 import sys
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
 
 def main():
