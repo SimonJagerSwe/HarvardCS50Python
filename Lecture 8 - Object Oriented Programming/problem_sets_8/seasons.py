@@ -8,7 +8,9 @@ def main():
     current_date = date.today()
     birth_date = (validate_date(input("Date of birth: "), current_date))
     # print(birth_date)
-    print(date_delta(birth_date, current_date))
+    days = date_delta(birth_date, current_date)
+    # print(days)
+    print(convert_days(days))
 
 
 def validate_date(b, c):
@@ -53,10 +55,8 @@ def date_delta(b, c):
     return current_date - birth_date
 
 
-def convert_date(birth_str):
-    # datetime.date.today()
-    # return
-    pass
+def convert_days(d):
+    return d
 
 if __name__ == "__main__":
     main()
