@@ -1,6 +1,8 @@
 # Imports
 # import datetime
+import inflect
 import sys
+
 from datetime import date, datetime, timedelta
 
 
@@ -9,9 +11,10 @@ def main():
     birth_date = (validate_date(input("Date of birth: "), current_date))
     # print(birth_date)
     days = date_delta(birth_date, current_date)
-    print(days)
+    # print(days)
     minutes = (convert_days(days))
-    print(minutes)
+    # print(minutes)
+    print(convert_minutes_to_string(minutes))
 
 
 def validate_date(b, c):
@@ -64,7 +67,19 @@ def convert_days(d):
 
 
 def convert_minutes_to_string(m):
-    pass
+    word_list = []
+    p = inflect.engine()
+    full_string = p.number_to_words(m)
+    full_string = full_string.split(",")
+    split_string = "".join(full_string)
+    words = split_string.split(" ")
+    for word in words:
+        if word == "and":
+            pass
+        else:
+            word_list.append(word)
+
+    return " ".join(word_list)
 
 if __name__ == "__main__":
     main()
