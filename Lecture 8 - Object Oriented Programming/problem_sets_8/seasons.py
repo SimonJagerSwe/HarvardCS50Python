@@ -13,7 +13,10 @@ def main():
     # print(days)
     minutes = (convert_days(days))
     # print(minutes)
-    print(convert_minutes_to_string(minutes))
+    # song = convert_minutes_to_string(minutes)
+    # print(song)
+    print(convert_minutes_to_string(minutes).capitalize())
+    # print(convert_minutes_to_string(minutes).capitalize())
 
 
 def validate_date(b, c):
@@ -66,19 +69,11 @@ def convert_days(d):
 
 
 def convert_minutes_to_string(m):
-    word_list = []
     p = inflect.engine()
-    full_string = p.number_to_words(m)
-    full_string = full_string.split(",")
-    split_string = "".join(full_string)
-    words = split_string.split(" ")
-    for word in words:
-        if word == "and":
-            pass
-        else:
-            word_list.append(word)
-
-    return " ".join(word_list)
+    m = int(m)
+    full_string = p.number_to_words(m).replace(" and", "")
+    # return " ".join(word_list)
+    return f"{full_string} minutes"
 
 if __name__ == "__main__":
     main()
