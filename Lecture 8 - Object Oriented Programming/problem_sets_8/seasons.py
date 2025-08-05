@@ -9,8 +9,9 @@ def main():
     birth_date = (validate_date(input("Date of birth: "), current_date))
     # print(birth_date)
     days = date_delta(birth_date, current_date)
-    # print(days)
-    print(convert_days(days))
+    print(days)
+    minutes = (convert_days(days))
+    print(minutes)
 
 
 def validate_date(b, c):
@@ -56,7 +57,14 @@ def date_delta(b, c):
 
 
 def convert_days(d):
-    return d
+    hours = str(d)
+    # print(type(hours))
+    minutes = int(hours.split(" ")[0]) * 1440
+    return minutes
+
+
+def convert_minutes_to_string(m):
+    pass
 
 if __name__ == "__main__":
     main()
