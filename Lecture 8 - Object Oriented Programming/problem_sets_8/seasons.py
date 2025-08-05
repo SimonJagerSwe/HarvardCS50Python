@@ -20,6 +20,8 @@ def main():
 
 
 def validate_date(b, c):
+    if not "-" in b:
+        sys.exit("Invalid date format")
     # current_date = datetime.date.today()
     # print(str(current_date))
     # print(type(current_date))
