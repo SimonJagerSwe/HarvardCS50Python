@@ -29,8 +29,15 @@ meows: str = meow(number)
 print(meows)
 '''
 
-# Example 4, more concise
+# Example 4, more concise, and adding docstrings
 def meow(n: int) -> str:
+    """Meow n times."""     # This is a docstring
+    """
+    Meow n times.           # Alternate docstring style
+    :param n: Number of times to meow
+    :type n: int
+    :raise TypeError:
+    """
     return "meow\n" * n
 
 
